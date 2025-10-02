@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor - AI Research Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="neural-network">
+            <div class="node" style="--delay: 0s; --x: 10%; --y: 20%;"></div>
+            <div class="node" style="--delay: 0.5s; --x: 80%; --y: 30%;"></div>
+            <div class="node" style="--delay: 1s; --x: 60%; --y: 70%;"></div>
+            <div class="node" style="--delay: 1.5s; --x: 20%; --y: 80%;"></div>
+            <div class="node" style="--delay: 2s; --x: 90%; --y: 60%;"></div>
+            <div class="connection" style="--start-x: 10%; --start-y: 20%; --end-x: 80%; --end-y: 30%;"></div>
+            <div class="connection" style="--start-x: 80%; --start-y: 30%; --end-x: 60%; --end-y: 70%;"></div>
+            <div class="connection" style="--start-x: 60%; --start-y: 70%; --end-x: 20%; --end-y: 80%;"></div>
+            <div class="connection" style="--start-x: 20%; --start-y: 80%; --end-x: 90%; --end-y: 60%;"></div>
+        </div>
+        <div class="particles"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h1 class="logo-text">Professor</h1>
+                <span class="logo-subtitle">AI Research Assistant</span>
+            </div>
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span>System Online</span>
+            </div>
+        </header>
+
+        <!-- Main Interface -->
+        <main class="main-interface">
+            <!-- Search Section -->
+            <section class="search-section" id="searchSection">
+                <div class="search-container">
+                    <div class="search-header">
+                        <h2>What would you like to research today?</h2>
+                        <p>Enter any topic and I'll gather comprehensive information for you</p>
+                    </div>
+                    
+                    <div class="search-input-container">
+                        <div class="input-wrapper">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="topicInput" placeholder="Enter your research topic..." class="search-input">
+                            <button class="voice-btn" id="voiceBtn">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="options-grid">
+                        <div class="option-card">
+                            <label for="responseStyle">Response Style</label>
+                            <select id="responseStyle" class="futuristic-select">
+                                <option value="Comprehensive">Comprehensive</option>
+                                <option value="Concise">Concise</option>
+                                <option value="Technical">Technical</option>
+                                <option value="Beginner-friendly">Beginner-friendly</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-card">
+                            <label class="toggle-label">
+                                <input type="checkbox" id="includeSources" checked>
+                                <span class="toggle-slider"></span>
+                                Include Sources
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="generate-btn" id="generateBtn">
+                        <span class="btn-text">Generate Research</span>
+                        <div class="btn-glow"></div>
+                        <i class="fas fa-rocket btn-icon"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Processing Section -->
+            <section class="processing-section hidden" id="processingSection">
+                <div class="processing-container">
+                    <div class="ai-brain">
+                        <div class="brain-core">
+                            <div class="core-ring"></div>
+                            <div class="core-ring"></div>
+                            <div class="core-ring"></div>
+                            <div class="core-center">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                        </div>
+                        <div class="brain-waves">
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="processing-info">
+                        <h3 id="processingTitle">Initializing AI Research...</h3>
+                        <p id="processingDescription">Preparing to gather information</p>
+                        
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <span class="progress-text" id="progressText">0%</span>
+                        </div>
+                        
+                        <div class="processing-steps">
+                            <div class="step" id="step1">
+                                <i class="fas fa-search"></i>
+                                <span>Searching web sources</span>
+                            </div>
+                            <div class="step" id="step2">
+                                <i class="fas fa-download"></i>
+                                <span>Scraping content</span>
+                            </div>
+                            <div class="step" id="step3">
+                                <i class="fas fa-filter"></i>
+                                <span>Processing data</span>
+                            </div>
+                            <div class="step" id="step4">
+                                <i class="fas fa-brain"></i>
+                                <span>Generating insights</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section hidden" id="resultsSection">
+                <div class="results-container">
+                    <div class="results-header">
+                        <h2>Research Complete</h2>
+                        <div class="results-meta">
+                            <span class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span id="processingTime">--</span>
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-file-alt"></i>
+                                <span id="sourcesCount">-- sources</span>
+                            </span>
+                            <span class="meta-item">
+                                <i class="fas fa-brain"></i>
+                                <span id="tokensUsed">-- tokens</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="results-content">
+                        <div class="holographic-display">
+                            <div class="holo-frame">
+                                <div class="holo-corner top-left"></div>
+                                <div class="holo-corner top-right"></div>
+                                <div class="holo-corner bottom-left"></div>
+                                <div class="holo-corner bottom-right"></div>
+                                <div class="holo-content" id="resultsContent">
+                                    <!-- Results will be displayed here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-actions">
+                        <button class="action-btn" id="copyBtn">
+                            <i class="fas fa-copy"></i>
+                            Copy Results
+                        </button>
+                        <button class="action-btn" id="downloadBtn">
+                            <i class="fas fa-download"></i>
+                            Download
+                        </button>
+                        <button class="action-btn" id="shareBtn">
+                            <i class="fas fa-share"></i>
+                            Share
+                        </button>
+                        <button class="action-btn primary" id="newSearchBtn">
+                            <i class="fas fa-plus"></i>
+                            New Research
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Professor AI Research Assistant. Powered by Advanced AI Technology.</p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay hidden" id="loadingOverlay">
+        <div class="quantum-loader">
+            <div class="quantum-ring"></div>
+            <div class="quantum-ring"></div>
+            <div class="quantum-ring"></div>
+            <div class="quantum-core"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
